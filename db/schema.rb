@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_04_040519) do
+ActiveRecord::Schema.define(version: 2023_04_04_080403) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2023_04_04_040519) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "category_id", null: false
+    t.integer "member_id"
+    t.integer "category_id"
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
