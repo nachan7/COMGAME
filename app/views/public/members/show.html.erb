@@ -1,2 +1,25 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<h1>マイページ</h1>
+
+<h4>名前</h4>
+<p><%= @member.name %></p>
+
+<h4>性別</h4>
+<p><%= @member.gender %></p>
+
+<h4>自己紹介</h4>
+<p><%= @member.introduction %></p>
+
+<h4>プレースタイル</h4>
+<p><%= @member.playstyle %></p>
+
+<h4>ゲーム内ランク</h4>
+<p><%= @member.gamerank %></p>
+
+<h4>ボイスチャット</h4>
+<p><%= @member.voicechat %></p>
+
+<h4>プレイ時間</h4>
+<p><%= @member.playtime %></p>
+
+<%= link_to "編集", edit_member_path(@member.id) %>
+
