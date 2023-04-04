@@ -13,7 +13,7 @@ scope module: :public do
     get '/about' => 'homes#about'
 
   #posts
-    resources :posts,only: [:new,:index,:show,:edit,:update,:create]
+    resources :posts,only: [:new,:index,:show,:edit,:update,:create,:destroy]
 
   #members
     resources :members,only: [:index,:show,:edit,:update]
@@ -31,7 +31,7 @@ namespace :admin do
     root to: 'homes#top'
 
   #posts
-    resources :posts,only: [:index,:show,:edit,:update,:destroy]
+    resources :posts,only: [:new, :create, :show, :edit, :update, :destroy]
 
   #members
     resources :members,only: [:index,:show,:edit,:update]
