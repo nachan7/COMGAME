@@ -1,2 +1,10 @@
-<h1>Public::Members#index</h1>
-<p>Find me in app/views/public/members/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+
+<% @members.each do |member| %>
+
+  <p>名前</p>
+  <span><%= member.name %></span>
+  <p>性別</p>
+  <p>プレースタイル</p>
+<% end %>
+
