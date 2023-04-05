@@ -2,6 +2,7 @@ class Admin::CategoriesController < ApplicationController
   def index
     @category = Category.new
     @categories = Category.all
+    
   end
 
   def create
@@ -17,6 +18,12 @@ class Admin::CategoriesController < ApplicationController
   def update
     category = Category.find(params[:id])
     category.update(category_params)
+    redirect_to admin_categories_path
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    category.destroy
     redirect_to admin_categories_path
   end
 
