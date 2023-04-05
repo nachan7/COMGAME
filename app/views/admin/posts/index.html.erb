@@ -1,2 +1,17 @@
-<h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+<h1>投稿一覧</h1>
+
+<% @members.each do |member| %>
+
+  <p>名前</p>
+  <span><%= link_to member.name, members_path(member.id) %></span>
+
+<% end %>
+
+<% @posts.each do |post| %>
+
+ <p>タイトル</p>
+ <span>
+   <%= link_to post.title, admin_post_path(post.id) %>
+ </span>
+
+<% end %>
