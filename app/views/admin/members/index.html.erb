@@ -1,2 +1,10 @@
-<h1>Admin::Members#index</h1>
-<p>Find me in app/views/admin/members/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+
+<% @members.each do |member| %>
+
+  <p>名前</p>
+  <span><%= link_to member.name, admin_member_path(member.id) %></span>
+  <p>メールアドレス</p>
+  <span><%= member.email %></span>
+  <p>会員ステータス</p>
+<% end %>

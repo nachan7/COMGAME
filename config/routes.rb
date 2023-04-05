@@ -32,6 +32,7 @@ namespace :admin do
 
   #posts
     resources :posts,only: [:index, :show, :edit, :update, :destroy]
+    get '/posts/member_post/:id' => 'posts#member_post'
 
   #members
     resources :members,only: [:index,:show,:edit,:update]

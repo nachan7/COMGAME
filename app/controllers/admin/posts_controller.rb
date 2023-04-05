@@ -9,6 +9,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def member_post
-     @post = Post.find(params[:id])
+    @posts = Post.all
+    @post = Post.find(params[:id])
   end
 end
