@@ -13,10 +13,10 @@ scope module: :public do
     get '/about' => 'homes#about'
 
   #posts
-    resources :posts,only: [:new,:index,:show,:edit,:update,:create,:destroy]
+    resources :posts,only: [:new, :index, :show, :edit, :update, :create, :destroy]
 
   #members
-    resources :members,only: [:index,:show,:edit,:update]
+    resources :members,only: [:index, :show, :edit, :update]
 
 end
 
@@ -35,10 +35,10 @@ namespace :admin do
     get '/posts/member_post/:id' => 'posts#member_post'
 
   #members
-    resources :members,only: [:index,:show,:edit,:update]
+    resources :members,only: [:index, :show, :edit, :update]
 
   #categories
-    resources :categories,only: [:index,:edit,:update,:create, :show]
+    resources :categories,only: [:index, :create, :edit, :update, :destroy]
 
 end
 
