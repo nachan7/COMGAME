@@ -31,7 +31,7 @@ namespace :admin do
     root to: 'homes#top'
 
   #posts
-    resources :posts,only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :posts,only: [:index, :show, :edit, :update, :destroy]
 
   #members
     resources :members,only: [:index,:show,:edit,:update]
