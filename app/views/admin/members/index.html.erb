@@ -1,10 +1,31 @@
-<h1>ユーザー一覧</h1>
-
-<% @members.each do |member| %>
-
-  <p>名前</p>
-  <span><%= link_to member.name, admin_member_path(member.id) %></span>
-  <p>メールアドレス</p>
-  <span><%= member.email %></span>
-  <p>会員ステータス</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mt-5 mx-auto">
+      <h1>ユーザー一覧</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>ユーザー名</th>
+            <th>メールアドレス</th>
+            <th>会員ステータス</th>
+          </tr>
+        </thead>
+        <% @members.each do |member| %>
+        <tbody>
+          <tr>
+            <td></td>
+            <td><%= link_to member.name, admin_member_path(member.id) %></td>
+            <td><%= member.email %></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,34 @@
-<h1>会員さんの会員情報詳細</h1>
-
-<h4>名前</h4>
-<p><%= @member.name %></p>
-
-<h4>メールアドレス</h4>
-<p><%= @member.email %></p>
-
-<h4>退会ステーテス</h4>
-
-<%= link_to "編集", edit_admin_member_path(@member.id) %>
-<%= link_to "投稿一覧", admin_path(@post.id) %>
+<div class="container">
+  <div class="row mt-5 mb-3">
+    <div class="col-8 mx-auto">
+      <h4>会員さんの会員情報詳細</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>ユーザ名</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @member.email %></td>
+          </tr>
+          <tr>
+            <th>退会ステータス</th>
+            <td></td>
+          </tr>
+        </thead>
+        
+      </table>
+      <%= link_to "編集", edit_admin_member_path(@member.id),class:"btn btn-success" %>
+      <%= link_to "投稿一覧", admin_path(@post.id),class:"btn btn-info" %>
+    </div>
+  </div>
+</div>
