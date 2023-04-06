@@ -1,11 +1,26 @@
-<h1>ユーザー一覧</h1>
-
-<% @members.each do |member| %>
-
-  <p>名前</p>
-  <span><%= member.name %></span>
-  <p>プレースタイル</p>
-<% end %>
-
-<%= link_to "編集", edit_member_path(current_member.id) %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-8 mt-5 mx-auto">
+      <h1>ユーザー一覧</h1>
+    </div>
+  </div>
+  <div class="col-8 mt-5 mx-auto">
+    <div class="card mb-3">
+      <div class="row">
+      <% @members.each do |member| %>
+        <div class="col-4">
+          <%= image_tag member.get_profile_image(100,100),class:"m-5" %>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= member.name %></h5>
+              <p class="card-text">自己紹介</p>
+              <p class="card-text">プレースタイル</p>
+              <p class="card-text"><small class="text-muted">最終更新3分前</small></p>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
