@@ -14,6 +14,7 @@ scope module: :public do
 
   #posts
     resources :posts,only: [:new, :index, :show, :edit, :update, :create, :destroy] do
+      resource :favorites, only: [:create, :destroy] #いいね
       resources :post_comments,only: [:create,:destroy] #コメント機能
     end
 
