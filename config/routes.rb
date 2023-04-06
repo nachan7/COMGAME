@@ -13,7 +13,9 @@ scope module: :public do
     get '/about' => 'homes#about'
 
   #posts
-    resources :posts,only: [:new, :index, :show, :edit, :update, :create, :destroy]
+    resources :posts,only: [:new, :index, :show, :edit, :update, :create, :destroy] do
+      resources :post_comments,only: [:create,:destroy] #コメント機能
+    end
 
   #members
     resources :members,only: [:index, :show, :edit, :update]
