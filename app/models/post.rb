@@ -3,6 +3,7 @@ class Post < ApplicationRecord
     has_one_attached :profile_image
     belongs_to :member, optional: true
     has_many :post_comments, dependent: :destroy
+    has_many :favorites, dependent: :destroy
 
     def get_profile_image(width, height)
     unless profile_image.attached?
@@ -10,5 +11,10 @@ class Post < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
      profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)
   end
 end

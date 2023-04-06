@@ -18,6 +18,22 @@
           </tr>
         </tbody>
       </table>
+
+       <% if @post.favorited_by?(current_member) %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+
+
       <%= link_to "編集", edit_post_path(@post.id),class:"btn btn-success" %>
 
 　　　<%= link_to "削除", @post,class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
@@ -33,13 +49,13 @@
           <% end %>
         <% end %>
       </div>
-      
+
       <%= form_with model: [@post, @post_comment] do |f| %>
         <div class="form-group">
           <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントをここに" %>
         </div>
         <%= f.submit "送信する",class:"btn btn-primary" %>
       <% end %>
-      
+
     </div>
   </div>
