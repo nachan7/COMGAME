@@ -1,25 +1,44 @@
-<h1>マイページ</h1>
-
-<h4>名前</h4>
-<p><%= @member.name %></p>
-
-<h4>性別</h4>
-<p><%= @member.gender %></p>
-
-<h4>自己紹介</h4>
-<p><%= @member.introduction %></p>
-
-<h4>プレースタイル</h4>
-<p><%= @member.playstyle %></p>
-
-<h4>ゲーム内ランク</h4>
-<p><%= @member.gamerank %></p>
-
-<h4>ボイスチャット</h4>
-<p><%= @member.voicechat %></p>
-
-<h4>プレイ時間</h4>
-<p><%= @member.playtime %></p>
-
-<%= link_to "編集", edit_member_path(@member.id) %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-8 mt-5 mx-auto">
+      <h1>マイページ</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table">
+        <%= image_tag @member.get_profile_image(100,100),class:"m-3" %>
+        <tbody>
+          <tr>
+            <th>名前</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= @member.gender %></td>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= @member.introduction %></td>
+          </tr>
+          <tr>
+            <th>プレースタイル</th>
+            <td><%= @member.playstyle %></td>
+          </tr>
+          <tr>
+            <th>ゲーム内ランク</th>
+            <td><%= @member.gamerank %></td>
+          </tr>
+          <tr>
+            <th>ボイスチャット</th>
+            <td><%= @member.voicechat %></td>
+          </tr>
+          <tr>
+            <th>プレイ時間</th>
+            <td><%= @member.playtime %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "編集", edit_member_path(@member.id),class:"mt-1 mb-5" %>
+    </div>
+  </div>
