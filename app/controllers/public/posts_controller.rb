@@ -6,11 +6,12 @@ class Public::PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     post.save!
-    redirect_to posts_path
+    redirect_to posts_path(current_member)
   end
 
   def index
     @posts = Post.all
+    @categories = Category.all
   end
 
   def show
@@ -37,6 +38,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :category_id)
   end
 end

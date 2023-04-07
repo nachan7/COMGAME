@@ -1,27 +1,33 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 mt-5 mx-auto">
-      <h1>投稿一覧</h1>
+    <div class="col-8 mt-5 offset-1">
+      <h1>投稿一覧</p></h1>
     </div>
-    <%= link_to "新規投稿", new_post_path %>
+    <div class="col-2 mt-5 mx-auto">
+      <%= link_to "新規投稿", new_post_path, class: "btn btn-primary" %>
+    </div>
   </div>
-  <div class="col-8 mt-5 mx-auto">
+  <div class="row">
+  <div class="col-10 mt-2 mx-auto">
     <% @posts.each do |post| %>
     <div class="card mb-3">
       <div class="row">
-        <div class="col-4">
+        <div class="col-3">
           <p>画像入れる</p>
+
         </div>
-        <div class="col-8">
+        <div class="col-9">
           <div class="card-body">
             <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
               <p class="card-text"><%= post.body %></p>
-              <p class="card-text text-left"><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
-              <p class="card-text"><small class="text-muted">最終更新3分前</small></p>
+              <p class="card-text"><%= post.category.name %></p>
+              <p class="card-text text-right"><small class="text-muted">投稿日:<%= post.created_at.strftime('%Y/%m/%d') %></small></p>
+
           </div>
         </div>
       </div>
     </div>
-    <% end %>
+     <% end %>
+  </div>
   </div>
 </div>
