@@ -4,8 +4,9 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.save!
+    @post = Post.new(post_params)
+    @post.member_id = current_member.id
+    @post.save
     redirect_to posts_path(current_member)
   end
 
