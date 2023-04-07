@@ -1,61 +1,40 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 mt-5 mx-auto">
+    <div class="col-10 mt-5 mx-auto">
       <h1>投稿詳細</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 mx-auto">
-      <table class="table mb-3">
+    <div class="col-10 mx-auto">
+      <table class="table mt-2 mb-3">
         <tbody>
           <tr>
-            <th>タイトル</th>
+            <th style="width:20%">タイトル</th>
             <td><%= @post.title %></td>
+          </tr>
+          <tr>
+            <th>カテゴリー</th>
+            <td><%= @post.category.name %></td>
           </tr>
           <tr>
             <th>投稿内容</th>
             <td><%= @post.body %></td>
           </tr>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
         </tbody>
       </table>
 
-       <% if @post.favorited_by?(current_member) %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+       <%= render 'public/favorites/favorite', post: @post %>
+
 
 
       <%= link_to "編集", edit_post_path(@post.id),class:"btn btn-success" %>
 
 　　　<%= link_to "削除", @post,class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
 
-　　　<div>
-  　　  　<p>コメント件数：<%= @post.post_comments.count %></p>
-        <% @post.post_comments.each do |post_comment| %>
-          <p>プロフィール画像入れる</p>
-          <%= post_comment.member.name %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-          <% if post_comment.member == current_member %>
-            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <%= form_with model: [@post, @post_comment] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントをここに" %>
-        </div>
-        <%= f.submit "送信する",class:"btn btn-primary" %>
-      <% end %>
-
     </div>
+    <%= render 'public/post_comments/posts_comment', post: @post, post_comment: @post_comment %>
   </div>

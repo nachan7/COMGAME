@@ -2,7 +2,7 @@ class Public::MembersController < ApplicationController
 
   def index
     @members = Member.all
-    @posts = @member.posts
+    #@posts = @member.posts
   end
 
   def show
