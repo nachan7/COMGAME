@@ -19,8 +19,9 @@ scope module: :public do
     end
 
   #members
-    resources :members,only: [:index, :show, :edit, :update]
-
+    resources :members,only: [:index, :show, :edit, :update] do
+      get :favorites, on: :member
+    end
 end
 
 #管理者側

@@ -1,13 +1,13 @@
 <% if post.favorited_by?(current_member) %>
   <p>
     <%= link_to post_favorites_path(post), method: :delete do %>
-      ♥<%= post.favorites.count %> いいね
+      ♥<%= post.favorites.count %> 気になる
     <% end %>
   </p>
 <% else %>
   <p>
     <%= link_to post_favorites_path(post), method: :post do %>
-      ♡<%= post.favorites.count %> いいね
+      ♡<%= post.favorites.count %> 気になる
     <% end %>
   </p>
 <% end %>

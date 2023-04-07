@@ -2,11 +2,17 @@ class Public::MembersController < ApplicationController
 
   def index
     @members = Member.all
-    #@posts = @member.posts
   end
 
   def show
     @member = Member.find(params[:id])
+
+  end
+
+  def favorites
+    @member = Member.find(params[:id])
+    favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
+    @favorite_lists = Post.find(favorites)
   end
 
   def edit
