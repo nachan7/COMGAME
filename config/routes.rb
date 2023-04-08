@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
 #会員
   devise_for :members, controllers: {
   registrations: "public/registrations",
@@ -14,14 +13,24 @@ scope module: :public do
 
   #posts
     resources :posts,only: [:new, :index, :show, :edit, :update, :create, :destroy] do
-      resource :favorites, only: [:create, :destroy] #いいね
-      resources :post_comments,only: [:create,:destroy] #コメント機能
+      #いいね
+      resource :favorites, only: [:create, :destroy]
+      #コメント機能
+      resources :post_comments,only: [:create,:destroy]
     end
 
   #members
     resources :members,only: [:index, :show, :edit, :update] do
+      # フォロー機能
+      resource :relationships, only: [:create, :destroy]
+         get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+      # 気になる一覧
       get :favorites, on: :member
     end
+     # 退会機能
+      get '/members/:id/quitcheck' => 'members#quit_check', as: 'quitcheck'
+      patch '/members/:id/quit' => 'members#quit', as: 'quit'
 end
 
 #管理者側
@@ -29,7 +38,7 @@ end
   sessions: "admin/sessions"
 }
 
-namespace :admin do
+  namespace :admin do
 
   #homes
     root to: 'homes#top'

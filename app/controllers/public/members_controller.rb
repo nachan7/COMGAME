@@ -25,6 +25,16 @@ class Public::MembersController < ApplicationController
     redirect_to member_path(@member.id)
   end
 
+  def quit_check
+    @member = current_member
+  end
+
+  def quit
+    @member = Member.find(params[:id])
+    @member.destroy
+    reset_session
+    redirect_to root_path, alert: "ご利用誠にありがとうございました。"
+  end
 
   private
 
