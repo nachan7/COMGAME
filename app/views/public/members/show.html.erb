@@ -6,7 +6,18 @@
   </div>
   <div class="row">
     <div class="col-8 mt-3 mx-auto">
+      <!--プロフィール画像-->
       <%= image_tag @member.get_profile_image(100,100),class:"m-3 rounded-circle" %>
+      <!--フォロー機能-->
+      <% if current_member.following?(@member) %>
+        <%= link_to "フォロー外す", member_relationships_path(@member.id), class: "btn btn-secondary", method: :delete %>
+      <% else %>
+        <%= link_to "フォローする", member_relationships_path(@member.id), class: "btn btn-outline-info", method: :post %>
+      <% end %>
+
+        <p><%= link_to  member_followings_path(@member.id) do %>フォロー<%= @member.followings.count %><% end %></p>
+        <p><%= link_to  member_followers_path(@member.id) do %>フォロワー<%= @member.followers.count %><% end %></p>
+
       <table class="table">
         <tbody>
           <tr>
