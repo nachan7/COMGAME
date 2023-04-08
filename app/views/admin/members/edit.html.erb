@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row mt-5 mb-3">
+<div class="container my-5">
+  <div class="row mb-3">
     <div class="col-6 mx-auto">
       <h4>会員さんの会員情報編集</h4>
     </div>
@@ -19,7 +19,14 @@
           <%= form_with model: @member do |f| %>
           <tr>
             <th>会員ステータ</th>
-            <td></td>
+            <%= form_with model: @member, url:admin_member_path, method: :patch do |f| %>
+            <td>
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, '有効' %>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, '退会' %>
+            </td>
+          <% end %>
           </tr>
         </thead>
       </table>

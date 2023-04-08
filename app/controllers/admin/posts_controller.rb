@@ -8,8 +8,5 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def member_post
-    @posts = Post.all
-    @post = Post.find(params[:id])
-  end
+  
 end

@@ -45,10 +45,12 @@ end
 
   #posts
     resources :posts,only: [:index, :show, :edit, :update, :destroy]
-    get '/posts/member_post/:id' => 'posts#member_post'
+
 
   #members
     resources :members,only: [:index, :show, :edit, :update]
+    # 会員投稿一覧
+    get '/member/member_post/:id' => 'members#member_post', as: 'member_post'
 
   #categories
     resources :categories,only: [:index, :create, :edit, :update, :destroy]
