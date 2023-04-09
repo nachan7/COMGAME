@@ -48,10 +48,15 @@ end
 
 
   #members
-    resources :members,only: [:index, :show, :edit, :update]
+    resources :members,only: [:index, :show, :edit, :update] do
+      member do
     # 会員投稿一覧
-    get '/member/member_post/:id' => 'members#member_post', as: 'member_post'
+     get :member_post
+     
+    end
+    #get '/member/member_post/:id' => 'members#member_post', as: 'member_post'
 
+    end
   #categories
     resources :categories,only: [:index, :create, :edit, :update, :destroy]
 

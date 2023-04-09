@@ -5,7 +5,6 @@ class Post < ApplicationRecord
     has_many :post_comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
     belongs_to :category
-    #has_many :member
 
 
   def favorited_by?(member)

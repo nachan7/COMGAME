@@ -19,7 +19,7 @@
         <tbody>
           <tr>
             <td><%= post.id %></td>
-            <td><%= link_to post.title, post_path(post.id) %></td>
+            <td><%= link_to post.title, admin_post_path(post.id) %></td>
             <td><%= post.favorites.count %></td>
             <td><%= post.post_comments.count %></td>
           </tr>
