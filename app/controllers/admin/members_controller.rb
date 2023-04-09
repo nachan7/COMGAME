@@ -13,7 +13,7 @@ class Admin::MembersController < ApplicationController
     @members = Member.all
     @member = Member.find(params[:id])
   end
-  
+
   def update
     @member = Member.find(params[:id])
     @member.update(member_params)
@@ -21,10 +21,10 @@ class Admin::MembersController < ApplicationController
   end
 
   def member_post
-    @members = Member.all
     @member = Member.find(params[:id])
-    @posts = Post.all
+    @posts = Post.where(member_id:params[:id])
   end
+
   private
 
   def member_params

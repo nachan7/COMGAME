@@ -34,11 +34,9 @@
           </tr>
         </tbody>
       </table>
-
-       <%= render 'public/favorites/favorite', post: @post %>
-
-
-
+      
+　　　<%= render 'public/favorites/favorite', post: @post %>
+      
       <%= link_to "編集", edit_post_path(@post.id),class:"btn btn-success" %>
 
 　　　<%= link_to "削除", @post,class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
