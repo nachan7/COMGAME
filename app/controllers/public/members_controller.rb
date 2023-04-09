@@ -1,4 +1,6 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!, except: [:show, :index]
+  
 
   def index
     @members = Member.all

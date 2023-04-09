@@ -29,7 +29,7 @@
             <td><%= @post.body %></td>
           </tr>
           <tr>
-            <th></th>
+            <td>♥<%= @post.favorites.count %> 気になる</td>
             <td></td>
           </tr>
         </tbody>
@@ -38,10 +38,10 @@
   </div>
     <!--いいね機能-->
     <div class="col-10 mx-auto">
-      <p> ♥<%= @post.favorites.count %> 気になる</p>
+      <%= link_to "削除", @post.member,class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
     </div>
     <!--コメント-->
-    <div class="col-10 mx-auto">
+    <div class="col-10 mt-3 mx-auto">
       <h4>コメント一覧</h4>
       <p>コメント件数：<%= @post.post_comments.count %></p>
       <% @post.post_comments.each do |post_comment| %>
@@ -56,12 +56,12 @@
                 <p class="card-text"><small><%= post_comment.comment %></small></p>
                 <p class="card-text text-right">
                   <small class="text-muted"><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
-                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment),class:"btn btn-sm btn-danger", method: :delete %>
+                  <%= link_to "削除",post_post_comment_path(post_comment.post.member, post_comment),class:"btn btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
                 </p>
               </div>
             </div>
           </div>
         </div>
-      <% end %>
+     <% end %>
     </div>
 </div>
