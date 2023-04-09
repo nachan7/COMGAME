@@ -1,4 +1,5 @@
 class Admin::MembersController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @members = Member.all
   end
@@ -14,9 +15,9 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
-  def update
-    @member = Member.find(params[:id])
-    @member.update(member_params)
+  def destroy
+    member = Member.find(params[:id])
+    member.destroy(member_params)
     redirect_to admin_member_path(@member.id)
   end
 
