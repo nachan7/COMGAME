@@ -34,16 +34,25 @@
           </tr>
         </tbody>
       </table>
+      <div id="favorite_btn_<%= @post.id %>">
+        <% if member_signed_in? %>
+          <%= render "public/favorites/favorite", post: @post %>
+        <% end %>
+      </div>
 
-      <% if member_signed_in? %>
-　　　  <%= render 'public/favorites/favorite', post: @post %>
-　　  <% end %>
       <% if @post.member == current_member %>
         <%= link_to "編集", edit_post_path(@post.id),class:"btn btn-success" %>
-        <%= link_to "削除", @post,class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+        <%= link_to "削除", @post, class: "btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
 　　  <% end %>
 
+  </div>
+  <div class="col-10 mt-5 mx-auto">
+    <div id="comments-area">
+      <%= render "public/post_comments/post_comment", post: @post, post_comment: @post_comment %>
     </div>
-    <%= render 'public/post_comments/posts_comment', post: @post, post_comment: @post_comment, member: @member %>
+  </div>
+
+
 
   </div>
+</div>
