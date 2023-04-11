@@ -36,10 +36,10 @@ class Member < ApplicationRecord
     end
      profile_image.variant(resize_to_limit: [width, height]).processed
    end
-
-   def self.search(search)
+   #検索機能
+    def self.search(search)
     if search != ""
-      Member.where('name LIKE(?)', "%#{search}%") # 
+      Member.where(['name LIKE(?) OR introduction LIKE(?) OR playstyle LIKE(?)',"%#{search}%","%#{search}%","%#{search}%"])
     else
       Member.all
     end
