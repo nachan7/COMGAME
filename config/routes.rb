@@ -27,10 +27,15 @@ scope module: :public do
         get 'followers' => 'relationships#followers', as: 'followers'
       # 気になる一覧
       get :favorites, on: :member
+      
+      collection do
+      get 'search'
+    end
     end
      # 退会機能
       get '/members/:id/quitcheck' => 'members#quit_check', as: 'quitcheck'
       patch '/members/:id/quit' => 'members#quit', as: 'quit'
+      
 end
 
 #管理者側

@@ -37,4 +37,11 @@ class Member < ApplicationRecord
      profile_image.variant(resize_to_limit: [width, height]).processed
    end
 
+   def self.search(search)
+    if search != ""
+      Member.where('name LIKE(?)', "%#{search}%") # 
+    else
+      Member.all
+    end
+  end
 end
