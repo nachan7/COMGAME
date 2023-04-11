@@ -17,6 +17,10 @@ class Public::PostsController < ApplicationController
     @categories = Category.all
   end
 
+  def search
+    @posts = Post.search(params[:keyword])
+  end
+
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new

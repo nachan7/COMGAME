@@ -17,6 +17,10 @@ scope module: :public do
       resource :favorites, only: [:create, :destroy]
       #コメント機能
       resources :post_comments,only: [:create,:destroy]
+      # 検索機能
+      collection do
+        get 'search'
+      end
     end
 
   #members
@@ -27,10 +31,10 @@ scope module: :public do
         get 'followers' => 'relationships#followers', as: 'followers'
       # 気になる一覧
       get :favorites, on: :member
-      
+      # 検索機能
       collection do
-      get 'search'
-    end
+        get 'search'
+      end
     end
      # 退会機能
       get '/members/:id/quitcheck' => 'members#quit_check', as: 'quitcheck'

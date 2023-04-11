@@ -4,7 +4,7 @@ class Public::MembersController < ApplicationController
   def index
     @members = Member.all
   end
-  
+
   def search
     @members = Member.search(params[:keyword])
   end
@@ -45,11 +45,6 @@ class Public::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:name,:email,:encrypted_password,:profile_image,:introduction,:gender,:playstyle,:gamerank,:voicechat,:playtime,:is_deleted)
-  end
-  
-  def search_product
-    @p = Member.ransack(params[:q])  # 検索オブジェクトを生成
-    @results = @p.result
   end
 
 end
