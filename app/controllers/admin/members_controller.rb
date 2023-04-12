@@ -1,5 +1,6 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
     @members = Member.all
   end
@@ -31,4 +32,5 @@ class Admin::MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:name,:email,:is_deleted)
   end
+  
 end
