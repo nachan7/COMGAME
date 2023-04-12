@@ -36,9 +36,9 @@
       </table>
     </div>
   </div>
-    <!--いいね機能-->
+  
     <div class="col-10 mx-auto">
-      <%= link_to "削除", @post.member,class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "削除", admin_post_path(@post),class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
     </div>
     <!--コメント-->
     <div class="col-10 mt-3 mx-auto">
@@ -57,6 +57,7 @@
                 <p class="card-text text-right">
                   <small class="text-muted"><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
                   <%= link_to "削除",post_post_comment_path(post_comment.post.member, post_comment),class:"btn btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+
                 </p>
               </div>
             </div>
