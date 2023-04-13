@@ -18,5 +18,5 @@ class Post < ApplicationRecord
     else
       Post.all
     end
-   end
+  end
 end

@@ -4,6 +4,7 @@
       <h1>検索一覧</p></h1>
     </div>
   </div>
+  <% if @posts.exists? %>
   <div class="row">
     <div class="col-10 mt-2 mx-auto">
       <% @posts.each do |post| %>
@@ -24,6 +25,9 @@
         </div>
       </div>
     <% end %>
+    <% else %>
+    <p>投稿がありません</p>
     </div>
   </div>
+  <% end %>
 </div>
