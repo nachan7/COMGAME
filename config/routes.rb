@@ -39,7 +39,7 @@ scope module: :public do
      # 退会機能
       get '/members/:id/quitcheck' => 'members#quit_check', as: 'quitcheck'
       patch '/members/:id/quit' => 'members#quit', as: 'quit'
-      
+
 end
 
 #管理者側
@@ -53,7 +53,10 @@ end
     root to: 'homes#top'
 
   #posts
-    resources :posts,only: [:index, :show, :edit, :update, :destroy]
+    resources :posts,only: [:index, :show, :edit, :update, :destroy] do
+       #コメント機能
+      resources :post_comments,only: [:create, :destroy]
+    end
 
 
   #members
@@ -61,7 +64,7 @@ end
       member do
     # 会員投稿一覧
      get :member_post
-     
+
     end
     #get '/member/member_post/:id' => 'members#member_post', as: 'member_post'
 
