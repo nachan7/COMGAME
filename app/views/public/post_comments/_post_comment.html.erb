@@ -22,14 +22,15 @@
         </div>
       </div>
     </div>
-
     <% end %>
+    
+    <!--コメントフォーム-->
     <% if member_signed_in? %>
-    <%= form_with model:[post,post_comment], local: false do |f| %>
-      <div class="form-group">
-        <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントをここに" %>
-      </div>
-      <%= f.submit "送信する",class:"btn btn-primary" %>
-    <% end %>
+      <%= form_with model:[post,post_comment], local: false do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントをここに" %>
+        </div>
+        <%= f.submit "送信する",class:"btn btn-primary" %>
+      <% end %>
     <% end %>
 

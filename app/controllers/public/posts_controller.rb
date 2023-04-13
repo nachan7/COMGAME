@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_member!, except: [:show, :index]
+  before_action :authenticate_member!, except: [:show, :index, :search]
 
   def new
     @post = Post.new
@@ -19,6 +19,8 @@ class Public::PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:keyword])
+    #render "index"
+
   end
 
   def show
@@ -45,6 +47,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :category_id)
+    params.require(:post).permit(:title, :body, :category_id, :keyword)
   end
+
 end
