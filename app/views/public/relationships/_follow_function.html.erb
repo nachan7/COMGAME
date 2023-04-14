@@ -1,0 +1,26 @@
+ <div class="row">
+    <div class="col-8 mt-3 mx-auto">
+      <div class="row">
+        <div class="col-sm-2">
+          <div> <!--プロフィール画像-->
+            <%= image_tag member.get_profile_image(100,100),class:"m-3 rounded-circle" %>
+          </div>
+        </div>
+        <!--フォロー機能--> 
+        <div class="col-sm-2 mt-5 text-center">
+          <p><%= link_to  member_followings_path(member.id) do %>フォロー<%= member.followings.count %><% end %></p>
+        </div>
+        <div class="col-sm-2 mt-5">
+           <p><%= link_to  member_followers_path(member.id) do %>フォロワー<%= member.followers.count %><% end %></p>
+        </div>
+        <div class="col-sm-3 mt-5">
+          <% if member_signed_in? %>
+            <% if current_member.following?(member) %>
+              <%= link_to "フォロー外す", member_relationships_path(member.id), class: "btn btn-secondary m-0", method: :delete %>
+            <% else %>
+              <%= link_to "フォローする", member_relationships_path(member.id), class: "btn btn-outline-info m-0", method: :post %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>

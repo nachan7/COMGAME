@@ -31,6 +31,7 @@ scope module: :public do
         get 'followers' => 'relationships#followers', as: 'followers'
       # 気になる一覧
       get :favorites, on: :member
+      get :member_post, on: :member
       # 検索機能
       collection do
         get 'search'

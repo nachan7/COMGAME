@@ -41,7 +41,7 @@ class Member < ApplicationRecord
     if search != ""
       Member.where(['name LIKE(?) OR introduction LIKE(?) OR playstyle LIKE(?)',"%#{search}%","%#{search}%","%#{search}%"])
     else
-      Member.all
+     Member.all
     end
   end
 end
