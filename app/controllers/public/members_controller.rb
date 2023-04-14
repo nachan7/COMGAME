@@ -13,6 +13,11 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
 
   end
+  
+   def member_post
+    @member = Member.find(params[:id])
+    @posts = Post.where(member_id:params[:id])
+  end
 
   def favorites
     @member = Member.find(params[:id])

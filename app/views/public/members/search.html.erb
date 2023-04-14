@@ -3,9 +3,9 @@
     <div class="col-10 mx-auto">
       <h1>検索一覧</h1>
     </div>
-  </div> 
-
+  </div>
   <div class="col-10 mt-5 mx-auto">
+  <% if @members.exists? %>
     <% @members.each do |member| %>
     <div class="card mb-3">
       <div class="row">
@@ -26,5 +26,8 @@
       </div>
     </div>
     <% end %>
+  <% else %>
+    <p>検索結果が見つかりませんでした</p>
+  <% end %>
   </div>
 </div>
