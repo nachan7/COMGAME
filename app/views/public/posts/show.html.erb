@@ -1,7 +1,8 @@
+<%= flash[:notice] %>
 <div class="container my-5">
   <div class="row">
     <div class="col-10 mx-auto">
-      <h1>投稿詳細</h1>
+      <h2>投稿詳細</h2>
     </div>
   </div>
   <div class="row">
@@ -29,24 +30,25 @@
             <td><%= @post.body %></td>
           </tr>
           <tr>
-            <th></th>
+            <th>
+              <div id="favorite_btn_<%= @post.id %>">
+              <% if member_signed_in? %>
+                <%= render "public/favorites/favorite", post: @post %>
+              <% end %>
+              </div>
+            </th>
             <td></td>
           </tr>
         </tbody>
       </table>
-      <!--気になる機能-->
-      <div id="favorite_btn_<%= @post.id %>">
-        <% if member_signed_in? %>
-          <%= render "public/favorites/favorite", post: @post %>
-        <% end %>
-      </div>
+
 
       <% if @post.member == current_member %>
         <%= link_to "編集", edit_post_path(@post.id),class:"btn btn-success" %>
         <%= link_to "削除", @post, class: "btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
 　　  <% end %>
     </div>
-    
+
     <div class="col-10 mt-5 mx-auto">
       <div id="comments-area">
         <%= render "public/post_comments/post_comment", post: @post, post_comment: @post_comment %>
