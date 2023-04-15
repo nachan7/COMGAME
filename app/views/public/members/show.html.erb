@@ -5,9 +5,20 @@
     </div>
   </div>
  <!--フォロー機能-->
-  <%= render "public/relationships/follow_function.html.erb", member: @member %>
-
+  <div class="row">
     <div class="col-8 mt-3 mx-auto">
+      <div class="row">
+        <%= render "public/relationships/follow_function", member: @member %>
+        <div class="col-sm-3 mt-5">
+           <% if current_member != @member && current_member.following?(@member) && @member.following?(current_member) %>
+             <%= link_to 'DMを送る', chat_path(@member.id), class: "btn btn-info m-0" %>
+           <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+　 <div class="row">
+    <div class="col-8 mx-auto">
       <table class="table">
         <tbody>
           <tr>

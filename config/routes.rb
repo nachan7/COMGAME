@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'chats/show'
+  end
 #会員
   devise_for :members, controllers: {
   registrations: "public/registrations",
@@ -40,7 +43,8 @@ scope module: :public do
      # 退会機能
       get '/members/:id/quitcheck' => 'members#quit_check', as: 'quitcheck'
       patch '/members/:id/quit' => 'members#quit', as: 'quit'
-
+     #DM機能
+      resources :chats, only: [:show, :create,]
 end
 
 #管理者側
