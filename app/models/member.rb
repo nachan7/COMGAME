@@ -8,6 +8,10 @@ class Member < ApplicationRecord
    has_many :post_comments, dependent: :destroy
    has_many :favorites, dependent: :destroy
    has_many :posts, dependent: :destroy
+   #DM機能
+   has_many :member_rooms
+  has_many :chats
+  has_many :rooms, through: :member_rooms
 
    # フォロー機能
    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
