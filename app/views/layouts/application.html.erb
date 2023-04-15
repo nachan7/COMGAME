@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
  </head>
@@ -15,10 +16,12 @@
     <header>
       <%= render 'layouts/header' %>
     </header>
-
-    <%= yield %>
     
-　　<footer  class="bg-dark text-white pt-5 pb-4">
+    <main>
+       <%= yield %>
+    </main>
+  
+　　<footer class=" bg-dark text-white pt-5 pb-4">
 　　  <%= render 'layouts/footer' %>
 　　</footer>
   </body>

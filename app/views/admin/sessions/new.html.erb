@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-6 mx-auto">
       <h2 class="text-center">管理者ログイン</h2>
-      
     </div>
   </div>
   <div class="row">
@@ -14,7 +13,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :パスワード %>
+          <%= f.label :パスワード ,class: "mt-2" %>
           <%= f.password_field :password, autocomplete: "current-password",class: "form-control" %>
         </div>
 
@@ -26,9 +25,10 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "ログイン", class: "form-control btn btn-success" %>
+          <%= f.submit "ログイン", class: "mt-4 form-control btn btn-success" %>
         </div>
       <% end %>
       <!--<%= render "admin/shared/links" %>-->
+    </div>
   </div>
 </div>

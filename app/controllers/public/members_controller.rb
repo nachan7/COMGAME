@@ -2,7 +2,7 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:show, :index]
 
   def index
-    @members = Member.all
+    @members = Member.order(created_at: :desc).page(params[:page])
   end
 
   def search
@@ -30,8 +30,12 @@ class Public::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(member_params)
-    redirect_to member_path(@member.id)
+    if @member.update(member_params)
+      flash[:notice] = "プロフィールの編集に成功しました"
+      redirect_to member_path(@member.id)
+    else
+      render :edit
+    end
   end
 
   def quit_check
