@@ -5,10 +5,10 @@
   <% post.post_comments.each do |post_comment| %>
   <div class="card mb-3">
     <div class="row">
-      <div class="col-3">
+      <div class="col-2">
         <%= image_tag post_comment.member.get_profile_image(100,100),class:"m-3 rounded-circle" %>
       </div>
-      <div class="col-9">
+      <div class="col-10">
         <div class="card-body">
           <p class="card-text"><%= post_comment.member.name %></p>
           <p class="card-text"><small><%= post_comment.comment %></small></p>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <% end %>
-    
+
     <!--コメントフォーム-->
     <% if member_signed_in? %>
       <%= form_with model:[post,post_comment], local: false do |f| %>

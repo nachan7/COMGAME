@@ -4,7 +4,7 @@
       <h3>プロフィール編集</h3>
     </div>
   </div>
-  <div class="row">
+　 <div class="row">
     <div class="col-8 mx-auto my-5">
       <%= form_with model: @member do |f| %>
       <table class="table table-borderless">
@@ -46,7 +46,6 @@
       <div class="row">
         <div class="col-8 mx-auto mt-3">
            <%= f.submit '変更を保存', class:"mr-4 btn btn-success" %>
-
            <%= link_to quitcheck_path do %>
              <button class="btn btn-danger" type="submit">退会する</button>
            <% end %>

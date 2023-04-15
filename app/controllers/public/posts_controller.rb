@@ -8,19 +8,21 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.member_id = current_member.id
-    @post.save
-    redirect_to posts_path(current_member)
+    if @post.save
+      flash[:notice] = "投稿が成功しました"
+      redirect_to posts_path(current_member)
+    else
+      render :new
+    end
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc).page(params[:page])
     @categories = Category.all
   end
 
   def search
     @posts = Post.search(params[:keyword])
-    #render "index"
-
   end
 
   def show
@@ -34,14 +36,22 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post.id)
+    if @post.update(post_params)
+      flash[:notice] = "編集に成功しました"
+      redirect_to post_path(@post.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.destroy
+      flash[:notice] = "投稿の削除に成功しました"
+      redirect_to posts_path
+    else
+      render :index
+    end
   end
 
   private

@@ -5,6 +5,10 @@ class Post < ApplicationRecord
     has_many :post_comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
     belongs_to :category
+    
+     validates :title, presence: true
+     validates :body, presence: true
+     
 
 #気になる機能
   def favorited_by?(member)
