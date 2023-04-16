@@ -1,8 +1,8 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
-    @members = Member.all
+     @members = Member.order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -16,10 +16,20 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
-  def destroy
-    member = Member.find(params[:id])
-    member.destroy(member_params)
-    redirect_to admin_member_path(@member.id)
+  def update
+    @member = Member.find(params[:id])
+    if @member.update(member_params)
+      flash[:notice] = "プロフィールの編集に成功しました"
+      redirect_to admin_member_path(@member.id)
+    else
+      render :edit
+    end
+  end
+
+  def quit
+    @member = Member.find(params[:id])
+    @member.destroy
+    redirect_to admin_members_path, alert: "会員を削除しました。"
   end
 
   def member_post
@@ -30,7 +40,7 @@ class Admin::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name,:email,:is_deleted)
+    params.require(:member).permit(:name,:email,:encrypted_password,:profile_image,:introduction,:gender,:playstyle,:gamerank,:voicechat,:playtime,:is_deleted)
   end
-  
+
 end
