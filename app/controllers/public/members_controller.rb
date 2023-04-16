@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!, except: [:show, :index]
+  before_action :authenticate_member!, except: [:show, :index, :search]
 
   def index
     @members = Member.order(created_at: :desc).page(params[:page])
