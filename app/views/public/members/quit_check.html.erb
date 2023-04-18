@@ -1,0 +1,22 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="justify-content-center text-center">
+        <div class="mb-4">
+        <h4><strong>本当に退会しますか？</strong></h4>
+        </div>
+        <div class="mb-5">
+          <h5>退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
+              再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
+              退会する場合は、「退会する」をクリックしてください。</h5>
+        </div>
+        <%= link_to member_path(@member.id), class: 'ml-3' do %>
+          <button class="btn btn-primary" type="submit">退会しない</button>
+        <% end %>
+        <%= link_to quit_path(current_member), method: :patch, data: { confilm: "本当に退会しますか？" }, class: 'ml-3' do %>
+          <button class="btn btn-danger" type="submit">退会する</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

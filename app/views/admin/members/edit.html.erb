@@ -1,2 +1,57 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<div class="container my-5">
+  <div class="row mb-3">
+    <div class="col-8 mx-auto">
+      <h4><%= @member.name %>さんの会員情報編集</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <%= form_with model: @member, url:admin_member_path, method: :patch do |f| %>
+      <table class="table table-borderless">
+    　　<tbody>
+          <tr>
+            <th style="width:30%">ユーザー名</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @member.email %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= f.text_field:gender, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= f.text_area:introduction, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th>プレースタイル</th>
+            <td><%= f.text_field:playstyle, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th>ゲーム内ランク</th>
+            <td><%= f.text_field:gamerank, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th>ボイスチャット</th>
+            <td><%= f.text_field:voicechat, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th>プレイ時間</th>
+            <td><%= f.text_field:playtime, class:"form-control" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto mt-3 text-center">
+      <%= f.submit '変更を保存', class:"m-4 btn btn-success" %>
+      <% end %>
+      <%= link_to  admin_quit_path(@member.id), method: :patch,"data-confirm" => "会員を本当に削除しますか？", class: 'ml-3' do %>
+        <button class="btn btn-danger" type="submit"> 会員の削除</button>
+      <% end %>
+    </div>
+  </div>
+</div>

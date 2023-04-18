@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-
+  namespace :public do
+    get 'chats/show'
+  end
 #会員
   devise_for :members, controllers: {
   registrations: "public/registrations",
@@ -13,11 +15,36 @@ scope module: :public do
     get '/about' => 'homes#about'
 
   #posts
-    resources :posts,only: [:new,:index,:show,:edit,:update,:create,:destroy]
+    resources :posts,only: [:new, :index, :show, :edit, :update, :create, :destroy] do
+      #いいね
+      resource :favorites, only: [:create, :destroy]
+      #コメント機能
+      resources :post_comments,only: [:create,:destroy]
+      # 検索機能
+      collection do
+        get 'search'
+      end
+    end
 
   #members
-    resources :members,only: [:index,:show,:edit,:update]
-
+    resources :members,only: [:index, :show, :edit, :update] do
+      # フォロー機能
+      resource :relationships, only: [:create, :destroy]
+         get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+      # 気になる一覧
+      get :favorites, on: :member
+      get :member_post, on: :member
+      # 検索機能
+      collection do
+        get 'search'
+      end
+    end
+     # 退会機能
+      get '/members/:id/quitcheck' => 'members#quit_check', as: 'quitcheck'
+      patch '/members/:id/quit' => 'members#quit', as: 'quit'
+     #DM機能
+      resources :chats, only: [:show, :create,]
 end
 
 #管理者側
@@ -25,20 +52,32 @@ end
   sessions: "admin/sessions"
 }
 
-namespace :admin do
+  namespace :admin do
 
   #homes
     root to: 'homes#top'
 
   #posts
-    resources :posts,only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :posts,only: [:index, :show, :edit, :update, :destroy] do
+       #コメント機能
+      resources :post_comments,only: [:create, :destroy]
+    end
+
 
   #members
-    resources :members,only: [:index,:show,:edit,:update]
+    resources :members,only: [:index, :show, :edit, :update] do
+      member do
+    # 会員投稿一覧
+     get :member_post
 
+    end
+    #get '/member/member_post/:id' => 'members#member_post', as: 'member_post'
+
+    end
   #categories
-    resources :categories,only: [:index,:edit,:update,:create, :show]
-
+    resources :categories,only: [:index, :create, :edit, :update, :destroy]
+    #退会機能
+    patch '/members/:id/quit' => 'members#quit', as: 'quit'
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

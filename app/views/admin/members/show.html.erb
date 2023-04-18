@@ -1,2 +1,60 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<%= flash[:notice] %>
+<div class="container">
+  <div class="row mt-5 mb-3">
+    <div class="col-8 mx-auto">
+      <h4><%= @member.name %>さんの会員情報詳細</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table text-center">
+        <table class="table">
+        <tbody>
+          <tr>
+            <th>会員ID</th>
+            <td><%= @member.id %></td>
+          </tr>
+          <tr>
+            <th style="width:25%">名前</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @member.email %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= @member.gender %></td>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= @member.introduction %></td>
+          </tr>
+          <tr>
+            <th>プレースタイル</th>
+            <td><%= @member.playstyle %></td>
+          </tr>
+          <tr>
+            <th>ゲーム内ランク</th>
+            <td><%= @member.gamerank %></td>
+          </tr>
+          <tr>
+            <th>ボイスチャット</th>
+            <td><%= @member.voicechat %></td>
+          </tr>
+          <tr>
+            <th>プレイ時間</th>
+            <td><%= @member.playtime %></td>
+          </tr>
+            <tr>
+              <th></th>
+              <td></td>
+            </tr>
+        </tbody>
+      </table>
+
+      <%= link_to "編集", edit_admin_member_path(@member.id), class: "btn btn-success" %>
+      <%= link_to "投稿一覧", member_post_admin_member_path(@member.id), class: "btn btn-info" %>
+    </div>
+  </div>
+</div>

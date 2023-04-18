@@ -1,0 +1,33 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h2>気になる一覧</h2>
+    </div>
+  </div>
+  <div class="col-10 mt-5 mx-auto">
+    <% if @posts..present? %>
+    <% @favorite_lists.each do |post|%>
+    <div class="card mb-3">
+      <div class="row">
+        <div class="col-2">
+          <%= image_tag post.member.get_profile_image(100,100),class:"m-3 rounded-circle" %>
+        </div>
+        <div class="col-10">
+          <div class="card-body">
+            <p class="card-title">
+              名前：<%= link_to member_path(post.member) do %><%= post.member.name %><% end %>
+            </p>
+            <p class="card-text">
+              タイトル：<%= link_to post_path(post.id) do %><%= post.title %><% end %>
+            </p>
+            <p class="card-text">投稿内容：<%= post.body %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
+    <p>気になるした投稿がありません</p>
+  <% end %>
+  </div>
+</div>

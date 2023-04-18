@@ -1,11 +1,58 @@
-<h1>投稿詳細</h1>
+<%= flash[:notice] %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h2>投稿詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <table class="table mt-2 mb-3">
+        <tbody>
+          <tr>
+            <th style="width:20%">タイトル</th>
+            <td><%= @post.title %></td>
+          </tr>
+          <tr>
+            <th style="width:20%">名前</th>
+            <td>
+              <%= link_to member_path(@post.member) do %>
+                <%= @post.member.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>カテゴリー</th>
+            <td><%= @post.category.name %></td>
+          </tr>
+          <tr>
+            <th>投稿内容</th>
+            <td><%= @post.body %></td>
+          </tr>
+          <tr>
+            <th>
+              <div id="favorite_btn_<%= @post.id %>">
+              <% if member_signed_in? %>
+                <%= render "public/favorites/favorite", post: @post %>
+              <% end %>
+              </div>
+            </th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
 
-<h2>タイトル</h2>
-<p><%= @post.title %></p>
 
-<h2>投稿内容</h2>
-<p><%= @post.body %></p>
+      <% if @post.member == current_member %>
+        <%= link_to "編集", edit_post_path(@post.id),class:"btn btn-success" %>
+        <%= link_to "削除", @post, class: "btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+　　  <% end %>
+    </div>
 
-<%= link_to "編集", edit_post_path(@post.id) %>
-
-<%= link_to "削除", @post, method: :delete,"data-confirm" => "本当に削除しますか？" %>
+    <div class="col-10 mt-5 mx-auto">
+      <div id="comments-area">
+        <%= render "public/post_comments/post_comment", post: @post, post_comment: @post_comment %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,13 +7,23 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <script src="https://kit.fontawesome.com/87353d7c5c.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag 'application' %>
+
+ </head>
   <body>
-    <header>
+    <header class="sticky-top" >
       <%= render 'layouts/header' %>
     </header>
-    <%= yield %>
+
+    <main>
+       <%= yield %>
+    </main>
+
+　　<footer class=" bg-dark text-white pt-5 pb-4">
+　　  <%= render 'layouts/footer' %>
+　　</footer>
   </body>
 </html>
