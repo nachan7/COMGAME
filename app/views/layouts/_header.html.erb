@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-dark">
-  <%= link_to image_tag('logo.png', width: '50%', height: '30%',class: "ml-5"), root_path %>
+  <%= link_to image_tag('logo.png', width: '40%',class: "ml-5"), root_path %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,7 +40,7 @@
       <% elsif member_signed_in? %>
         <li class="nav-link px-32">
           <%= link_to about_path, class: "text-decoration-none text-light text-light h5" do %>
-            <i class="fas fa-link"></i> About
+            <i class="fas fa-question-circle"></i> 使い方
           <% end %>
         </li>
         <li class="nav-link px-2">
