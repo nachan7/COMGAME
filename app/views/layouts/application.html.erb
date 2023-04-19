@@ -2,10 +2,11 @@
 <html>
   <head>
     <title>COMGAME</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 
     <script src="https://kit.fontawesome.com/87353d7c5c.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -22,7 +23,7 @@
        <%= yield %>
     </main>
 
-　　<footer class=" bg-dark text-white pt-5 pb-4">
+　　<footer class=" bg-dark text-white pt-3 pb-2">
 　　  <%= render 'layouts/footer' %>
 　　</footer>
   </body>
