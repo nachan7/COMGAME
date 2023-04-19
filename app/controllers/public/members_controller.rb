@@ -15,13 +15,14 @@ class Public::MembersController < ApplicationController
 
    def member_post
     @member = Member.find(params[:id])
-    @posts = Post.where(member_id:params[:id])
+    @posts = Post.where(member_id:params[:id]).order(created_at: :desc).page(params[:page])
    end
 
   def favorites
     @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
     @favorite_lists = Post.find(favorites)
+    
   end
 
   def edit

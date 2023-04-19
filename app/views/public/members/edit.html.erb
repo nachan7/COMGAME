@@ -1,12 +1,12 @@
 <div class="container my-5">
   <div class="row">
-    <div class="col-8 mx-auto">
-      <h2>プロフィール編集</h2>
+    <div class="col-8 mt-5 mx-auto">
+      <h2><i class="fas fa-user-cog mr-2"></i>プロフィール編集</h2>
       <%= render 'layouts/error',obj: @member %>
     </div>
   </div>
 　 <div class="row">
-    <div class="col-8 mx-auto my-5">
+    <div class="col-8 mx-auto mt-3 mb-5">
       <%= form_with model: @member do |f| %>
       <table class="table table-borderless">
         <tbody>
@@ -45,7 +45,7 @@
         </tbody>
       </table>
       <div class="row">
-        <div class="col-8 mx-auto mt-3">
+        <div class="col-8 text-right mt-4">
            <%= f.submit '変更を保存', class:"mr-4 btn btn-success" %>
            <%= link_to quitcheck_path do %>
              <button class="btn btn-danger" type="submit">退会する</button>
