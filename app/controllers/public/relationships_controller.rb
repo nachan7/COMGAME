@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+   before_action :authenticate_member!, except: [:followings,:followers]
 
   def create
     current_member.follow(params[:member_id])
@@ -10,6 +11,7 @@ class Public::RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
+
   def followings
     member = Member.find(params[:member_id])
     @members = member.followings
@@ -19,4 +21,5 @@ class Public::RelationshipsController < ApplicationController
     member = Member.find(params[:member_id])
     @members = member.followers
   end
+
 end

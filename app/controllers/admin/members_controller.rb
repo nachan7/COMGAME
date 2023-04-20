@@ -5,6 +5,10 @@ class Admin::MembersController < ApplicationController
      @members = Member.order(created_at: :desc).page(params[:page])
   end
 
+  def search
+    @members = Member.search(params[:keyword]).order(created_at: :desc).page(params[:page])
+  end
+
   def show
     @members = Member.all
     @member = Member.find(params[:id])
