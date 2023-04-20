@@ -20,30 +20,8 @@
       <% end %>
     </div>
   </div>
-
+  <!--ユーザー-->
   <div class="col-10 mt-3 mx-auto border-top">
-    <% @members.each do |member| %>
-    <div class="card my-3">
-      <div class="row">
-        <div class="col-2">
-          <%= image_tag member.get_profile_image(100,100), class: "my-3 mx-4 rounded-circle" %>
-        </div>
-        <div class="col-10">
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= link_to member_path(member) do %>
-                <%= member.name %>
-              <% end %>
-            </h5>
-              <p class="card-text">自己紹介：<%= member.introduction %></p>
-              <p class="card-text">プレースタイル：<%= member.playstyle %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-     <div class="d-flex justify-content-center mt-5">
-      <%= paginate @members %>
-    </div>
+    <%= render 'public/members/index', members: @members %>
   </div>
 </div>

@@ -1,37 +1,37 @@
+<%= flash[:notice] %>
 <div class="container my-5">
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-10 mx-auto">
       <h1><i class="fas fa-list-alt mr-2"></i>投稿一覧</h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-8 mt-3 mx-auto">
-      <table class="table text-center">
-        <thead>
-          <tr>
-            <th>投稿ID</th>
-            <th>ユーザー名</th>
-            <th>投稿タイトル</th>
-            <th>いいね数</th>
-            <th>コメント数</th>
-          </tr>
-        </thead>
-        <% @posts.each do |post| %>
-        <tbody>
-          <tr>
-          </td>
-            <td><%= post.id %></td>
-            <td><%= link_to post.member.name, admin_member_path(post.member.id) %></td>
-            <td><%= link_to post.title, admin_post_path(post.id) %></td>
-            <td><%= post.favorites.count %></td>
-            <td><%= post.post_comments.count %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
-      <div class="d-flex justify-content-center mt-5">
-        <%= paginate @posts %>
+  <!--検索フォーム-->
+  <%= form_with url: search_admin_posts_path, method: :get do |f| %>
+    <div class="row">
+      <div class="col-10  mt-3 mx-auto">
+        <div class="mb-3 row ">
+          <label class="col-sm-2 text-center mt-2 p-0 m-0">カテゴリー</label>
+          <div class="col-6 ">
+            <%= f.collection_select :category_id, Category.all, :id, :name,{include_blank:'選択して下さい'}, class: "form-control" %>
+          </div>
+        </div>
       </div>
+      <div class="col-10 mx-auto">
+        <div class="mb-3 row">
+          <div class="col-sm-7">
+            <%= f.text_field :keyword, class: "form-control" %>
+          </div>
+          <div class="col-sm-2">
+            <%= f.submit "検索", class: "btn btn-outline-secondary form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  　<% end %>
+
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <%= render 'admin/posts/index', posts: @posts %>
     </div>
   </div>
 </div>
