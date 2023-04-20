@@ -15,6 +15,7 @@ class Member < ApplicationRecord
 
    validates :name, presence: true
    validates :email, presence: true
+   validates :introduction,length:{maximum:400}
 
    # フォロー機能
    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

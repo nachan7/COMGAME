@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     #DM機能
     get 'chats/show'
   end
+
 #会員
   devise_for :members, controllers: {
   registrations: "public/registrations",
@@ -43,6 +44,8 @@ scope module: :public do
       patch '/members/:id/quit' => 'members#quit', as: 'quit'
      #DM機能
       resources :chats, only: [:show, :create,]
+
+
 end
 
 #管理者側
