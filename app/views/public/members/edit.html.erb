@@ -11,7 +11,7 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <th style="width:25%">プロフィール画像</th>
+            <th style="width:20%">プロフィール画像</th>
             <td><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></td>
           </tr>
           <tr>
@@ -29,23 +29,23 @@
           <tr>
           <tr>
             <th>自己紹介</th>
-            <td><%= f.text_area:introduction, class:"form-control" %></td>
+            <td><%= f.text_area:introduction, class:"form-control", placeholder: "自己紹介やよく遊ぶゲームなど記入して下さい(400字以内)",rows: 8 %></td>
           </tr>
           <tr>
             <th>プレイスタイル</th>
-            <td><%= f.text_field:playstyle, class:"form-control" %></td>
+            <td><%= f.text_field:playstyle, class:"form-control", placeholder: "本気、気楽に、エンジョイなど" %></td>
           </tr>
           <tr>
             <th>ゲーム内ランク</th>
-            <td><%= f.text_field:gamerank, class:"form-control" %></td>
+            <td><%= f.text_field:gamerank, class:"form-control", placeholder: "ゲーム名とゲームランクを記入して下さい" %></td>
           </tr>
           <tr>
             <th>ボイスチャット</th>
-            <td><%= f.text_field:voicechat, class:"form-control" %></td>
+            <td><%= f.text_field:voicechat, class:"form-control", placeholder: "使用しているボイスチャットがあれば記入して下さい" %></td>
           </tr>
           <tr>
             <th>プレイ時間</th>
-            <td><%= f.text_field:playtime, class:"form-control" %></td>
+            <td><%= f.text_field:playtime, class:"form-control", placeholder: "よく遊ぶ時間帯を記入して下さい" %></td>
           </tr>
           <tr>
             <th></th>
