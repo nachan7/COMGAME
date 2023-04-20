@@ -23,6 +23,11 @@
             <td><%= f.text_field:email, class:"form-control" %></td>
           </tr>
           <tr>
+            <th>性別</th>
+            <td><%= f.select:gender, [ ["男性","男性"], ["女性", "女性"],["非公開", "非公開"] ], prompt: "選択してください", class:"form-control" %></td>
+          </tr>
+          <tr>
+          <tr>
             <th>自己紹介</th>
             <td><%= f.text_area:introduction, class:"form-control" %></td>
           </tr>
