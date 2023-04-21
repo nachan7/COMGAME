@@ -37,9 +37,8 @@
     </div>
   </div>
 
-    <div class="col-10 mx-auto">
-      <%= link_to "削除", admin_post_path(@post),class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
-    </div>
-
-    <%= render 'admin/post_comments/post_comment', post: @post, post_comment: @post_comment %>
+  <div class="col-10 mx-auto">
+    <%= link_to "削除", admin_post_path(@post),class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+  </div>
+  <%= render 'admin/post_comments/post_comment', post: @post, post_comment: @post_comment %>
 </div>
