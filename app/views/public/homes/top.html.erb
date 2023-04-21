@@ -1,12 +1,11 @@
 <%= flash[:alert] %>
   <div style="position: relative; display:inline-block;">
-     <%= image_tag 'top.jpg',class: "img-fluid max-width: 100%; , height: auto;" %>
-    <div class="cover-text text-center" style="position: absolute; top: 100px; left: 230px; max-width: 100%; max-height: 100%; padding: 30px; text-align; color:#fff;">
+    <%= image_tag 'top.jpg',class: "img-fluid max-width: 100%; , height: auto;" %>
+    <div class="cover-text text-center" style="position: absolute; top: 120px; left: 230px; max-width: 100%; max-height: 100%; padding: 30px; text-align; color:#fff;">
       <h1 class="display-3 pb-3">Welcome to COMGAME</h1>
       <h3>あなただけの充実したGAMELIFEを</h3>
      </div>
   </div>
-
   <div class="container my-5">
     <!--最新４件の投稿-->
     <div class="row mt-5">
@@ -33,7 +32,7 @@
               </div>
             </div>
             <% end %>
-            
+
             <div class="text-right">
             <%= link_to posts_path,  class: "text-decoration-none text-dark font-weight-bold" do %>
               全ての投稿を見る<i class="fa-solid fa-right-to-bracket"></i>
