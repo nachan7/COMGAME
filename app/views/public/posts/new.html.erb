@@ -16,12 +16,12 @@
           <%= f.label :カテゴリー %>
           <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <%= f.label :投稿内容 %>
           <%= f.text_area :body, class:"form-control", placeholder: "投稿内容の詳細を記載した下さい(400字以内)", rows: 8 %>
         </div>
          <%= f.submit '投稿', class:"mt-4 form-control btn btn btn-primary" %>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,36 +1,36 @@
- <%= flash[:notice] %>
+<%= flash[:notice] %>
 <div class="container my-5">
   <div class="row">
     <div class="col-8 offset-1">
       <h1><i class="fas fa-list-alt mr-2"></i></i>投稿一覧</p></h1>
     </div>
   </div>
-　　<!--検索フォーム-->
-　　<%= form_with url: search_posts_path, method: :get do |f| %>
-    <div class="row">
-      <div class="col-8 offset-1">
-        <div class="mb-3 row ">
-          <label class="col-sm-2 text-center mt-2 p-0 m-0">カテゴリー</label>
-          <div class="col-6 ">
-            <%= f.collection_select :category_id, Category.all, :id, :name,{include_blank:'選択して下さい'}, class: "form-control" %>
-          </div>
-        </div>
-      </div>
-      <div class="col-10 mx-auto">
-        <div class="mb-3 row">
-          <div class="col-sm-7">
-            <%= f.text_field :keyword, class: "form-control" %>
-          </div>
-          <div class="col-sm-2">
-            <button class="btn btn-outline-secondary" type="submit">検索</button>
-          </div>
-          <div class="col-sm-2 text-right offset-1">
-            <a class="btn btn-primary" href="/posts/new" role="button"><i class="fas fa-edit"></i>新規投稿</a>
-          </div>
+　<!--検索フォーム-->
+　<%= form_with url: search_posts_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-8 offset-1">
+      <div class="mb-3 row ">
+        <label class="col-sm-2 text-center mt-2 p-0 m-0">カテゴリー</label>
+        <div class="col-6 ">
+          <%= f.collection_select :category_id, Category.all, :id, :name,{include_blank:'選択して下さい'}, class: "form-control" %>
         </div>
       </div>
     </div>
-  　<% end %>
+    <div class="col-10 mx-auto">
+      <div class="mb-3 row">
+        <div class="col-sm-7">
+          <%= f.text_field :keyword, class: "form-control" %>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-outline-secondary" type="submit">検索</button>
+        </div>
+        <div class="col-sm-2 text-right offset-1">
+          <a class="btn btn-primary" href="/posts/new" role="button"><i class="fas fa-edit"></i>新規投稿</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 
   <div class="row">
     <div class="col-10 mx-auto border-top">
