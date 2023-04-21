@@ -94,6 +94,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    high_voltage (3.1.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -267,6 +268,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
+  high_voltage
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails

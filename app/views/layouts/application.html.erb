@@ -14,16 +14,16 @@
     <%= stylesheet_link_tag 'application' %>
 
  </head>
-  <body>
+  <body class="bg-light">
     <header class="sticky-top" >
       <%= render 'layouts/header' %>
     </header>
 
-    <main>
-       <%= yield %>
+    <main class="bg-light">
+      <%= yield %>
     </main>
 
-　　<footer class=" bg-dark text-white pt-3 pb-2">
+　　<footer class="bg-dark text-white">
 　　  <%= render 'layouts/footer' %>
 　　</footer>
   </body>
