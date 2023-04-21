@@ -14,7 +14,7 @@
     <tr>
       <td><%= post.id %></td>
       <td><%= link_to post.member.name, admin_member_path(post.member.id) %></td>
-      <td><%= link_to post.title, post_path(post.id) %></td>
+      <td><%= link_to post.title, admin_post_path(post.id) %></td>
       <td><%= post.category.name %></td>
       <td><%= post.favorites.count %></td>
       <td><%= post.post_comments.count %></td>

@@ -28,8 +28,8 @@
             <th>投稿内容</th>
             <td><%= @post.body %></td>
           </tr>
-          <tr>
-            <td><i class="fas fa-heart text-decoration-none" style="color: #f61e1e;"></i><%= @post.favorites.count %> 気になる</td>
+　　　　　<tr>
+            <td><i class="fas fa-heart mr-1" style="color: #f61e1e;"></i><%= @post.favorites.count %> 気になる</td>
             <td></td>
           </tr>
         </tbody>
@@ -41,4 +41,6 @@
     <%= link_to "削除", admin_post_path(@post),class:"btn btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
   </div>
   <%= render 'admin/post_comments/post_comment', post: @post, post_comment: @post_comment %>
+
+
 </div>
