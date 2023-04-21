@@ -6,15 +6,15 @@
   </div>
   <!--検索フォーム-->
   <div class="row mt-5">
-    <div class="col-10 mx-auto">
+    <div class="col-8 col-md-10 mx-auto">
       <%= form_with url: search_members_path, local: true, method: :get  do |f| %>
       <div class="mb-3 row">
-        <label class="col-sm-2 text-center mt-2 p-0 m-0">キーワード検索</label>
+        <label class="col-3 text-center mt-2 p-0 m-0">キーワード検索</label>
          <div class="col-6 ">
            <%= f.text_field :keyword, class: "form-control" %>
          </div>
          <div class="col-sm-2">
-           <%= f.submit "検索", class: "btn btn-outline-secondary form-control" %>
+           <button class="btn btn-outline-secondary" type="submit">検索</button>
          </div>
       </div>
       <% end %>
