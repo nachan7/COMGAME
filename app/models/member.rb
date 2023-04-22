@@ -12,9 +12,10 @@ class Member < ApplicationRecord
    has_many :member_rooms
    has_many :chats
    has_many :rooms, through: :member_rooms
-  
+
    validates :name, presence: true
    validates :email, presence: true
+   validates :introduction,length:{maximum:400}
 
    # フォロー機能
    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -22,6 +23,7 @@ class Member < ApplicationRecord
 
    has_many :followings, through: :relationships, source: :followed
    has_many :followers, through: :reverse_of_relationships, source: :follower
+
 
      def follow(member_id)
        relationships.create(followed_id: member_id)

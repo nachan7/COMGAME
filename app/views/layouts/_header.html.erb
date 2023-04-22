@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-dark">
-  <%= link_to image_tag('logo.png', width: '40%',class: "ml-5"), root_path %>
+  <%= link_to image_tag('logo.png', width: '42%',class: "ml-5"), root_path %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
     </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <div class="member-name text-light center-block">
+    <div class="member-ame text-light center-block">
       <% if member_signed_in? %>
         <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_member.name %></strong></span> さん</p>
       <% elsif admin_signed_in? %>
@@ -67,7 +67,7 @@
       <% else %>
         <li class="nav-link px-2">
           <%= link_to about_path, class: "text-decoration-none text-light text-light h5" do %>
-            <i class="fas fa-link"></i> About
+            <i class="fas fa-question-circle"></i> 使い方
           <% end %>
         </li>
         <li class="nav-link px-2">

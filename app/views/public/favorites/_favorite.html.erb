@@ -1,9 +1,11 @@
 <% if post.favorited_by?(current_member) %>
   <%= link_to post_favorites_path(post), method: :delete, remote: true do  %>
-    ♥<%= post.favorites.count %> 気になる
+    <i class="fas fa-heart text-decoration-none" style="color: #f61e1e;"></i>
   <% end %>
+  <%= post.favorites.count %> 気になる
 <% else %>
   <%= link_to post_favorites_path(post), method: :post, remote: true do %>
-    ♡<%= post.favorites.count %> 気になる
+    <i class="far fa-heart text-decoration-none" style="color: #f61e1e;"></i>
   <% end %>
+  <%= post.favorites.count %> 気になる
 <% end %>

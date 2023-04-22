@@ -6,7 +6,7 @@ class Public::MembersController < ApplicationController
   end
 
   def search
-    @members = Member.search(params[:keyword])
+    @members = Member.search(params[:keyword]).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -22,7 +22,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
     @favorite_lists = Post.find(favorites)
-    
+
   end
 
   def edit

@@ -22,8 +22,8 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params)
-    
+    @posts = Post.search(params).order(created_at: :desc).page(params[:page])
+
   end
 
   def show

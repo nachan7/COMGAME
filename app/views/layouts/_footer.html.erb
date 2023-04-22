@@ -1,5 +1,24 @@
 <div class="container">
-  <div class="text-center">
-    <p>© 2023 COMGAME All Rights Reserved.</p>
+  <div class="row">
+    <div class="col-4">
+      <ul class="list-unstyled my-0">
+        <li>
+          <%= link_to page_path("terms"), class:"text-light text-decoration-none" do %>
+            <i class="fas fa-exclamation-circle mr-1"></i>利用規約
+          <% end %>
+        </li>
+        <li>
+          <%= link_to page_path("privacy"), class:"text-light text-decoration-none" do %>
+            <i class="fas fa-user-shield mr-1"></i>プライバシーポリシー
+          <% end %>
+        </li>
+        <li>
+          <a class="text-light text-decoration-none" href="https://forms.gle/jozZGe9YBUfp3NRe6"><i class="fas fa-envelope mr-1"></i>お問い合わせ</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-8 mt-4">
+      <p class="ml-2">© 2023 COMGAME All Rights Reserved.</p>
+    </div>
   </div>
 </div>
