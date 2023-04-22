@@ -7,7 +7,6 @@ class Public::PostCommentsController < ApplicationController
     @comment.post_id = @post.id
     @comment.save
     @post_comment = PostComment.new
-
     #redirect_to post_path(@post.id)
   end
 
@@ -15,6 +14,7 @@ class Public::PostCommentsController < ApplicationController
     PostComment.find(params[:id]).destroy
     @post = Post.find(params[:post_id])
     @post_comment = PostComment.new
+    
     #redirect_to post_path(params[:post_id])
   end
 
