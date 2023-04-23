@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-dark">
-  <%= link_to image_tag('logo.png', width: '42%',class: "ml-5"), root_path %>
+  <div class="ml-5 my-0" style="display: inline;">
+    <%= link_to image_tag('logo.png', width: '55%'), root_path %>
+  </div>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,7 +58,7 @@
         </li>
         <li class="nav-link px-2">
           <%= link_to member_path(current_member.id), class: "text-decoration-none text-light h5" do %>
-            <i class="fas fa-user-cog"></i> マイページ
+            <i class="fas fa-address-card"></i> マイページ
           <% end %>
         </li>
         <li class="nav-link px-2">

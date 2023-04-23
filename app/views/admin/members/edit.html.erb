@@ -1,57 +1,44 @@
 <div class="container my-5">
   <div class="row mb-3">
-    <div class="col-10 mx-auto">
+    <div class="col-md-8 mx-auto">
       <h2><i class="fas fa-user-cog mr-2"></i><%= @member.name %>さんの会員情報編集</h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-md-8 mx-auto mt-3 mb-5">
       <%= form_with model: @member, url:admin_member_path, method: :patch do |f| %>
-      <table class="table table-borderless">
-    　　<tbody>
-          <tr>
-            <th style="width:20%">ユーザー名</th>
-            <td><%= @member.name %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @member.email %></td>
-          </tr>
-          <tr>
-            <th>性別</th>
-            <td><%= f.select:gender, [ ["男性","男性"], ["女性", "女性"],["非公開", "非公開"] ], prompt: "選択してください", class:"form-control" %></td>
-          </tr>
-          <tr>
-            <th>自己紹介</th>
-            <td><%= f.text_area:introduction, class:"form-control" %></td>
-          </tr>
-          <tr>
-            <th>プレースタイル</th>
-            <td><%= f.text_field:playstyle, class:"form-control" %></td>
-          </tr>
-          <tr>
-            <th>ゲーム内ランク</th>
-            <td><%= f.text_field:gamerank, class:"form-control" %></td>
-          </tr>
-          <tr>
-            <th>ボイスチャット</th>
-            <td><%= f.text_field:voicechat, class:"form-control" %></td>
-          </tr>
-          <tr>
-            <th>プレイ時間</th>
-            <td><%= f.text_field:playtime, class:"form-control" %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <%= f.submit '変更を保存', class:"mt-3 mr-3 btn btn-success" %>
-              <%= link_to  admin_quit_path(@member.id), method: :patch,"data-confirm" => "会員を本当に削除しますか？", class: 'ml-3' do %>
-                <button class="btn btn-danger mt-3" type="submit"> 会員の削除</button>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <%= f.label :プロフィール画像, class:"mr-2" %>
+        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %><br>
+
+        <%= f.label :名前,class:"mt-2" %>
+        <%= f.text_field:name, class:"form-control" %><br>
+
+        <%= f.label :メールアドレス %>
+        <%= f.text_field:email, class:"form-control" %><br>
+
+        <%= f.label :性別, class:"mr-2" %>
+        <%= f.select:gender, [ ["男性","男性"], ["女性", "女性"],["非公開", "非公開"] ], prompt: "選択してください", class:"form-control" %><br>
+
+        <%= f.label :自己紹介,class: "mt-2" %>
+        <%= f.text_area:introduction, class:"form-control", placeholder: "自己紹介やよく遊ぶゲームなど記入して下さい(400字以内)",rows: 8 %><br>
+
+        <%= f.label :プレイスタイル %>
+        <%= f.text_field:playstyle, class:"form-control", placeholder: "本気、気楽に、エンジョイなど" %><br>
+
+        <%= f.label :ゲーム内ランク %>
+        <%= f.text_field:gamerank, class:"form-control", placeholder: "ゲーム名とゲームランクを記入して下さい" %><br>
+
+        <%= f.label :ボイスチャット %>
+        <%= f.text_field:voicechat, class:"form-control", placeholder: "使用しているボイスチャットがあれば記入して下さい" %><br>
+
+        <%= f.label :プレイ時間 %>
+　　　  <%= f.text_field:playtime, class:"form-control", placeholder: "よく遊ぶ時間帯を記入して下さい" %><br>
+
+　　　　<%= f.submit '変更を保存', class:"mt-3 btn btn-success form-control" %>
+
+        <%= link_to  admin_quit_path(@member.id), method: :patch,"data-confirm" => "会員を本当に削除しますか？" do %>
+          <button class="btn btn-danger mt-3 form-control" type="submit"> 会員の削除</button>
+        <% end %>
       <% end %>
     </div>
   </div>
