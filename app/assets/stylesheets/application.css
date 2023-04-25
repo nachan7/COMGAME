@@ -13,11 +13,13 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
 body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+  font-family: 'DotGothic16', sans-serif;
 }
 main {
   flex: 1;
@@ -25,6 +27,7 @@ main {
 
 header {
   background-color: block;
+
 }
 
 header a{
@@ -37,4 +40,7 @@ header a{
 
 .navbar-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+h1,h2 {
+   font-family: 'DotGothic16', sans-serif;
 }

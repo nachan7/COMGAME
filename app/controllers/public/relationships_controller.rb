@@ -14,12 +14,12 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     member = Member.find(params[:member_id])
-    @members = member.followings
+    @members = member.followings.order(created_at: :desc).page(params[:page])
   end
 
   def followers
     member = Member.find(params[:member_id])
-    @members = member.followers
+    @members = member.followers.order(created_at: :desc).page(params[:page])
   end
 
 end
