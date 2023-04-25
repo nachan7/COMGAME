@@ -24,6 +24,7 @@
 - ゲーム内フレンドや、ゲーム仲間を探しているとき
 
 ## 設計書
+![PF_ER図](https://user-images.githubusercontent.com/122135152/234282418-5350f820-9d5f-4f7f-97a1-023b25e2b33d.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
