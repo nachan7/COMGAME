@@ -8,9 +8,10 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.member_id = current_member.id
+    @post.score = Language.get_data(post_params[:body])
     if @post.save
       flash[:notice] = "投稿が成功しました"
-      redirect_to posts_path(current_member)
+      redirect_to post_path(@post.id)
     else
       render :new
     end
