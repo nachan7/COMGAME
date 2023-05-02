@@ -21,7 +21,7 @@
       <% if post.score >= 0 %>
         <td><%= post.score %></td>
       <% else %>
-        <td><strong><p class="text-danger"><%= post.score %></p></strong></td>
+        <td><p class="text-danger"><%= post.score %></p></td>
       <% end %>
       <!--<td><#%= post.score %></td>-->
       <td><%= post.favorites.count %></td>
