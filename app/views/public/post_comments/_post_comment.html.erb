@@ -13,7 +13,7 @@
       <div class="col-md-10">
         <div class="card-body">
           <p class="card-text"><%= post_comment.member.name %></p>
-          <p class="card-text"><small><%= post_comment.comment %></small></p>
+          <p class="card-text"><%= post_comment.comment %></p>
           <p class="card-text text-right">
             <small class="text-muted"><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
               <% if post_comment.member == current_member %>
@@ -30,7 +30,7 @@
     <% if member_signed_in? %>
       <%= form_with model:[post,post_comment], local: false do |f| %>
         <div class="form-group">
-          <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントをここに" %>
+          <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントを入力してください" %>
         </div>
         <%= f.submit "送信する",class:"btn btn-primary" %>
       <% end %>
