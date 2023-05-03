@@ -6,9 +6,9 @@
       <th>ユーザー名</th>
       <th>投稿タイトル</th>
       <th>カテゴリー名</th>
-      <th>スコア</th>
-      <th>気になる数</th>
-      <th>コメント数</th>
+      <th>投稿スコア</th>
+      <th>気になる</th>
+      <th>コメント</th>
     </tr>
   </thead>
   <% posts.each do |post| %>
@@ -21,7 +21,7 @@
       <% if post.score >= 0 %>
         <td><%= post.score %></td>
       <% else %>
-        <td><p class="text-danger"><%= post.score %></p></td>
+        <td class="text-danger"><%= post.score %></td>
       <% end %>
       <!--<td><#%= post.score %></td>-->
       <td><%= post.favorites.count %></td>

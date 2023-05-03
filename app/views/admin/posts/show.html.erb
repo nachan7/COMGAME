@@ -29,8 +29,12 @@
             <td><%= @post.body %></td>
           </tr>
           <tr>
-            <th>score</th>
-            <td><%= @post.score %></td>
+            <th>スコア</th>
+            <% if @post.score >= 0 %>
+              <td><%= @post.score %></td>
+            <% else %>
+              <td class="text-danger"><%= @post.score %></td>
+            <% end %>
           </tr>
 　　　　　<tr>
             <td><i class="fas fa-heart mr-1" style="color: #f61e1e;"></i><%= @post.favorites.count %> 気になる</td>
