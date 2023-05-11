@@ -2,17 +2,21 @@
 
 class Public::SessionsController < Devise::SessionsController
    # before_action :configure_sign_in_params, only: [:create]
+  before_action :member_state, only:[:create]
 
   protected
-    def reject_member
-      @member = Member.find_by(email: params[:member][:email])
-      if @member
-        if @member.valid_password?(params[:member][:password]) && (@member.is_deleted == false)
-          flash[:notice] = "退会済みの為、再登録が必要です。"
-          redirect_to new_member_session_path
-        end
-      end
+
+  def member_state
+    @member = Member.find_by(email: params[:member][:email])
+
+    if @member && @member.valid_password?(params[:member][:password]) && @member.is_deleted
+      flash[:notice] = "退会済みのため、再度会員登録してください。"
+      redirect_to new_member_registration_path
     end
+  end
+
+
+
   # GET /resource/sign_in
   # def new
   #   super

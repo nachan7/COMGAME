@@ -53,4 +53,8 @@ class Member < ApplicationRecord
      Member.all
     end
   end
+  #退会したユーザー表示
+  def deleted_message
+    is_deleted ? '（このユーザーは退会しています）' : ''
+  end
 end

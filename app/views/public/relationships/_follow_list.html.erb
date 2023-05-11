@@ -10,10 +10,14 @@
         <div class="col-10">
           <div class="card-body">
             <h5 class="card-title">
+            <% if member.is_deleted %>
+              <%= member.name %><%= member.deleted_message %>
+            <% else %>
               <%= link_to member_path(member) do %>
-                <%= member.name %>
+                <div class="member-name"><%= member.name %></div>
               <% end %>
-            </h5>
+            <% end %>
+          </h5>
               <p class="card-text">自己紹介：<%= member.introduction %></p>
               <p class="card-text">プレースタイル：<%= member.playstyle %></p>
           </div>

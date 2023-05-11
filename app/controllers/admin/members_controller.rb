@@ -30,11 +30,27 @@ class Admin::MembersController < ApplicationController
     end
   end
 
-  def quit
+  def quit_check
     @member = Member.find(params[:id])
-    @member.destroy
-    redirect_to admin_members_path, alert: "会員を削除しました。"
   end
+
+  def quit
+    member = Member.find(params[:id])
+    member.update(is_deleted: true)
+    flash[:notice] = "退会させました"
+    member.favorites.destroy_all
+    member.followings.destroy_all
+    member.followers.destroy_all
+    member.posts.destroy_all
+    member.post_comments.destroy_all
+    redirect_to admin_members_path
+  end
+
+  #def quit
+   # @member = Member.find(params[:id])
+    #@member.destroy
+    #redirect_to admin_members_path, alert: "会員を削除しました。"
+  #end
 
   def member_post
     @member = Member.find(params[:id])
