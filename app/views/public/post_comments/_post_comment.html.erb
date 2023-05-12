@@ -30,7 +30,7 @@
     <% if member_signed_in? %>
       <%= form_with model:[post,post_comment], local: false do |f| %>
         <div class="form-group">
-          <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントを入力してください" %>
+          <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントを100字以内で入力してください" %>
         </div>
         <%= f.submit "送信する",class:"btn btn-primary" %>
       <% end %>

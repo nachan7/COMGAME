@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:show, :index, :search]
+  before_action :is_matching_login_member, only:[:edit, :update, :quit_check]
 
   def index
     @members = Member.order(created_at: :desc).page(params[:page])
@@ -11,6 +12,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+
   end
 
    def member_post
@@ -44,16 +46,37 @@ class Public::MembersController < ApplicationController
   end
 
   def quit
-    @member = Member.find(params[:id])
-    @member.destroy
+    member = Member.find(params[:id])
+    member.update(is_deleted: true)
     reset_session
-    redirect_to root_path, alert: "ご利用誠にありがとうございました。"
+    flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました"
+    member.favorites.destroy_all
+    member.followings.destroy_all
+    member.followers.destroy_all
+    member.posts.destroy_all
+    member.post_comments.destroy_all
+    redirect_to root_path
   end
+
+  #def quit
+    #@member = Member.find(params[:id])
+    #@member.destroy
+    #reset_session
+    #redirect_to root_path, alert: "ご利用誠にありがとうございました。"
+  #end
 
   private
 
   def member_params
     params.require(:member).permit(:name,:email,:encrypted_password,:profile_image,:introduction,:gender,:playstyle,:gamerank,:voicechat,:playtime,:is_deleted)
+  end
+
+  def is_matching_login_member
+    @member = Member.find(params[:id])
+    unless @member.id == current_member.id
+      flash[:notice] = "アクセスできません"
+      redirect_to member_path(current_member.id)
+    end
   end
 
 end

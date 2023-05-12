@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 justify-content-censter text-center">
+      <div class="my-5">
+        <h2><strong>退会確認</strong></h2>
+      </div>
+      <div>
+        <h5><strong><%= @member.name %></strong>を退会して宜しいですか？</h5>
+      </div>
+      <div class="mt-5">
+      <%= link_to "退会しない", admin_member_path(@member.id), class:"btn btn-success mr-3" %>
+      <%= link_to "退会させる", admin_quit_path(@member.id), method: :patch, class:"btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

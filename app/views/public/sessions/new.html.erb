@@ -1,3 +1,4 @@
+<% flash[:alert] %>
 <div class="container my-5">
   <div class="row">
     <div class="col-6 mx-auto">
@@ -7,7 +8,7 @@
   <div class="row">
     <div class="col-6 mt-3 mx-auto">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  　　　　<div class="field">
+        <div class="field">
           <%= f.label :メールアドレス %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" %>
         </div>

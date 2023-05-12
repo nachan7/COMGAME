@@ -20,7 +20,11 @@
         <tbody>
           <tr>
             <th style="width:25%">名前</th>
-            <td><%= @member.name %></td>
+            <% if @member.is_deleted %>
+              <td><%= @member.name %><%= @member.deleted_message %> </td>
+            <% else %>
+               <td><%= @member.name %></td>
+            <% end %>
           </tr>
           <tr>
             <th>性別</th>

@@ -38,7 +38,7 @@
 
 　　　　<%= f.submit '変更保存', class:"mt-3 btn btn-success form-control" %>
 
-　　　　<%= link_to quitcheck_path do %>
+　　　　<%= link_to quitcheck_path(@member.id) do %>
           <button class="mt-4 btn btn-danger form-control" type="submit">退会する</button>
         <% end %>
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :members, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
+
 }
 
 scope module: :public do
@@ -79,6 +80,7 @@ end
     #categories
     resources :categories,only: [:index, :create, :edit, :update, :destroy]
     #退会機能
+    get '/members/:id/quitcheck' => 'members#quit_check', as: 'quitcheck'
     patch '/members/:id/quit' => 'members#quit', as: 'quit'
 end
 
