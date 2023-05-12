@@ -65,10 +65,14 @@
             <div class="col-md-10">
               <div class="card-body">
                 <h5 class="card-title">
-                  <%= link_to member_path(member) do %>
-                    <%= member.name %>
+                  <% if member.is_deleted %>
+                    <%= member.name %><%= member.deleted_message %>
+                  <% else %>
+                    <%= link_to member_path(member) do %>
+                      <%= member.name %>
+                    <% end %>
                   <% end %>
-                  </h5>
+                </h5>
                   <p class="card-text">自己紹介：<%= member.introduction %></p>
                   <p class="card-text">プレースタイル：<%= member.playstyle %></p>
               </div>

@@ -16,12 +16,8 @@
           <tr>
             <th class="text-center">名前</th>
             <td>
-              <% if @post.member.is_deleted %>
-                <%= @post.member.name %>（退会したユーザーです）
-              <% else %>
-                <%= link_to member_path(@post.member) do %>
-                  <%= @post.member.name %>
-                <% end %>
+              <%= link_to member_path(@post.member) do %>
+                <%= @post.member.name %>
               <% end %>
             </td>
           </tr>

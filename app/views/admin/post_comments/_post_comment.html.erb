@@ -17,7 +17,11 @@
             <p class="card-text"><%= post_comment.comment %></p>
             <p class="card-text text-right">
               <small class="text-muted"><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
-              <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment),class:"btn btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？", remote: true %>
+            <% if post_comment.comment != "管理者によって削除されました" %>
+              <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment),class:"btn btn-sm btn-danger", method: :patch, remote: true, "data-confirm" => "本当に削除して宜しいですか？" %>
+            <% end %>
+
+              <!--<#%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment),class:"btn btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？", remote: true %>-->
             </p>
           </div>
         </div>

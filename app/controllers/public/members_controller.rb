@@ -55,6 +55,7 @@ class Public::MembersController < ApplicationController
     member.followers.destroy_all
     member.posts.destroy_all
     member.post_comments.destroy_all
+    member.destroy
     redirect_to root_path
   end
 

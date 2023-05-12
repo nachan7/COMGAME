@@ -55,6 +55,6 @@ class Member < ApplicationRecord
   end
   #退会したユーザー表示
   def deleted_message
-    is_deleted ? '（このユーザーは退会しています）' : ''
+    is_deleted ? '（このユーザーは管理者によって停止されました）' : ''
   end
 end

@@ -46,7 +46,6 @@ scope module: :public do
      #DM機能
       resources :chats, only: [:show, :create,]
 
-
 end
 
 #管理者側
@@ -62,7 +61,7 @@ end
     #posts
     resources :posts,only: [:index, :show, :edit, :update, :destroy] do
       #コメント機能
-      resources :post_comments,only: [:create, :destroy]
+      resources :post_comments,only: [:update]
       #検索機能
       get :search, on: :collection
     end
