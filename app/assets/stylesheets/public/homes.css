@@ -1,0 +1,83 @@
+.top {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85%;
+}
+
+.logo {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 100px;
+}
+
+.icons {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  background-size: cover;
+  animation: iconAnimation 0.3s ease-in-out infinite alternate;
+  margin: 10px;
+  width: 70px;
+  height: 90px;
+}
+
+@keyframes iconAnimation {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.blinking-text {
+  position: absolute;
+  top: 63%;
+  left: 8%;
+  color: #fff;
+  animation: blink 1s infinite;
+}
+
+.toptext{
+  position: absolute;
+  list-style-type: none;
+  top: 63%;
+  left: 7%;
+  color: #fff;
+}
+
+li {
+  padding-bottom: 4px;
+}
+
+.text {
+  position: absolute;
+  top: 63%;
+  left: 27%;
+  color: #fff;
+}
+
