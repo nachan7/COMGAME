@@ -1,18 +1,51 @@
 <%= flash[:alert] %>
-<div class="container">
-  <div class="row">
-    <div style="position: relative; display:inline-block;">
-      <%= image_tag 'top.png',class: "img-fluid max-width: 100%; , height: auto;" %>
-      <div class="col-12 cover-text text-center" style="position: absolute; top: 10%; color:#fff;">
 
-      </div>
+ <div class="top">
+  <%= image_tag("backtop.png", class: "background") %>
+    <div class="logo">
+      <%= image_tag("toplogo2.png", class: "logo") %>
     </div>
-  </div>
+    <div class="icons">
+      <%= image_tag("senshi.png", class: "icon icon1") %>
+      <%= image_tag("soryo.png", class: "icon icon2") %>
+      <%= image_tag("yusha.png", class: "icon icon3") %>
+      <%= image_tag("mahotsukai.png", class: "icon icon4") %>
+      <%= image_tag("heishi.png", class: "icon icon5") %>
+    </div>
+    <p id="myText" class="blinking-text">▶️</p>
+    <ul class="toptext">
+      <li>新規登録</li>
+      <li>ログイン</li>
+      <li>仲間を探す</li>
+      <li>にげる</li>
+    </ul>
+    <div class="text">
+      <h4 class="typewriter">COMGAMEへようこそ！</h4>
+      <!--テキストを１文字ずつ表示-->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const typewriter = document.querySelector('.typewriter');
+          const text = typewriter.innerText;
+          typewriter.innerText = '';
+
+          let i = 0;
+          function type() {
+            if (i < text.length) {
+              typewriter.innerText += text.charAt(i);
+              i++;
+              setTimeout(type, 140); // 100ミリ秒ごとに次の文字を表示
+            }
+          }
+
+          type();
+        });
+      </script>
+    </div>
 </div>
 
-<div class="container my-5">
+<div class="container ">
   <!--最新４件の投稿-->
-  <div class="row border-top mt-5">
+  <div class="row border-top">
     <div class="col-md-10 mx-auto">
       <h2><strong><i class="fa-regular fa-file-lines mt-5 mr-2"></i>最新の投稿</strong></h2>
     </div>
