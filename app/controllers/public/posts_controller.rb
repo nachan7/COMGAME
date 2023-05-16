@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:show, :index, :search]
-
+  before_action :is_matching_login_user, only:[:edit, :update, :destroy]
   def new
     @post = Post.new
   end
@@ -61,6 +61,14 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :category_id, :keyword)
+  end
+  
+  def is_matching_login_member
+    post = Post.find(params[:id])
+    unless post.member_id == current_member.id
+      flash[:notice] = "アクセスできません"
+      redirect_to member_path(current_member.id)
+    end
   end
 
 end
